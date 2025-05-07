@@ -65,6 +65,10 @@ The script supports various command-line parameters to customize the simulation:
 --k K                    # Watts-Strogatz neighbors (default: 6)
 --grid-dims ROWS COLS    # Grid dimensions (default: 5 4)
 
+# Gap junction parameters
+--gap-min MIN           # Minimum gap junction coupling strength (default: 0.1)
+--gap-max MAX           # Maximum gap junction coupling strength (default: 0.3)
+
 # Simulation parameters
 --dt DT                  # Time step (default: 0.5)
 --tmax TMAX             # Maximum simulation time (default: 600)
@@ -97,6 +101,11 @@ python scripts/simulation_realtime.py --graph-type grid2d --grid-dims 6 6 --save
 Run a simulation with custom Izhikevich parameters:
 ```bash
 python scripts/simulation_realtime.py --a 0.03 --b 0.25 --c -55 --d 2.5
+```
+
+Run a simulation with custom gap junction coupling:
+```bash
+python scripts/simulation_realtime.py --gap-min 0.05 --gap-max 0.4
 ```
 
 ## Visualization

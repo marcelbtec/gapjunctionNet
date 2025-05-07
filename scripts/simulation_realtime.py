@@ -64,6 +64,12 @@ def parse_arguments():
     parser.add_argument('--grid-dims', type=int, nargs=2, default=[5, 4],
                       help='Grid dimensions for grid2d (default: 5 4)')
     
+    # Gap junction parameters
+    parser.add_argument('--gap-min', type=float, default=0.1,
+                      help='Minimum gap junction coupling strength (default: 0.1)')
+    parser.add_argument('--gap-max', type=float, default=0.3,
+                      help='Maximum gap junction coupling strength (default: 0.3)')
+    
     # Simulation parameters
     parser.add_argument('--dt', type=float, default=0.5,
                       help='Time step (default: 0.5)')
@@ -136,7 +142,7 @@ def main():
     # -------------------
     adj_matrix = np.zeros((N, N))
     for (u, v) in G.edges():
-        g_gap = np.random.uniform(0.1, 0.3)
+        g_gap = np.random.uniform(args.gap_min, args.gap_max)
         adj_matrix[u, v] = g_gap
         adj_matrix[v, u] = g_gap
 
